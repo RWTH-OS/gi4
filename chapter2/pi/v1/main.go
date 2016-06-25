@@ -21,13 +21,9 @@ func term(i int, step float64) (x float64) {
 
 func main() {
 	var num_steps int
-	var err error
 
 	if len(os.Args) > 1 {
-		num_steps, err = strconv.Atoi(os.Args[1])
-		if err != nil {
-			num_steps = 0
-		}
+		num_steps, _ = strconv.Atoi(os.Args[1])
 	}
 	if num_steps < 100 {
 		num_steps = 1000000
