@@ -46,7 +46,7 @@ func main() {
 		go term(ch, i)
 	}
 
-	for i:=0; i < num_steps; i++ {
+	for i := 0; i < num_steps; i++ {
 		sum += <-ch
 	}
 
