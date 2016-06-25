@@ -23,14 +23,10 @@ func term(ch chan float64, i int) {
 
 func main() {
 	var num_steps int
-	var err error
 	ch := make(chan float64)
 
 	if len(os.Args) > 1 {
-		num_steps, err = strconv.Atoi(os.Args[1])
-		if err != nil {
-			num_steps = 0
-		}
+		num_steps, _ = strconv.Atoi(os.Args[1])
 	}
 	if num_steps < 100 {
 		num_steps = 1000000
