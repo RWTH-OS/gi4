@@ -29,7 +29,7 @@ func term(ch chan float64, start, end int) {
 func main() {
 	var num_steps int
 	ch := make(chan float64)
-	max_goroutines := runtime.NumCPU()
+	max_coroutines := runtime.NumCPU()
 
 	if len(os.Args) > 1 {
 		num_steps, _ = strconv.Atoi(os.Args[1])
@@ -44,14 +44,14 @@ func main() {
 
 	start := time.Now()
 
-	for i := 0; i < max_goroutines; i++ {
-		start := (num_steps / max_goroutines) * i
-		end := (num_steps / max_goroutines) * (i+1)
+	for i := 0; i < max_coroutines; i++ {
+		start := (num_steps / max_coroutines) * i
+		end := (num_steps / max_coroutines) * (i+1)
 
 		go term(ch, start, end)
 	}
 
-	for i := 0; i < max_goroutines; i++ {
+	for i := 0; i < max_coroutines; i++ {
 		sum += <-ch
 	}
 
