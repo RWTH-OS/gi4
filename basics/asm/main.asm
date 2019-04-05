@@ -6,12 +6,12 @@ SECTION .data
 SECTION .text
 
 ; oeffentliche Functionen deklarieren
-	global main
+global main
 
 ; Funktionen implementieren
 main:
-	push ebp	; neuer Stackframe erzeugen
-	mov ebp, esp
+	push rbp	; neuer Stackframe erzeugen
+	mov rbp, rsp
 
 	; Diese Datei kann als Vorlage für die
 	; Entwicklung von Assembler-Programmen
@@ -20,8 +20,7 @@ main:
 	; ersetzt werden.
 	call asmfunc
 
-	mov esp, ebp	; alter Stackframe restaurieren
-	pop ebp	
+	pop rbp     ; alter Stackframe restaurieren	
 
 	; Programm verlassen & signalisieren,
 	; dass bei bei der Ausführung kein Fehler

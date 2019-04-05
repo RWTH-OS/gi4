@@ -2,10 +2,11 @@
 #         werden zur ausführbaren Datei "start" zusammengebunden!
 MAKE = make 
 CC = gcc 
-CFLAGS = -m32 -Wall -O0 -g #-pthread, nur für POSIX-Threads notwendig
+CFLAGS = -Wall -O0 -g #-pthread, nur für POSIX-Threads notwendig
+LDFLAGS = -static
 RM = rm -rf                #rm = Unix-Befehl remove = Dateien löschen 
 ASM = nasm 
-ASMFLAGS = -f elf32 -O0 -g -F dwarf
+ASMFLAGS = -f elf64 -O0 -g -F dwarf
 
 NAME = start # Name des Programms/der ausführbaren Datei 
 
@@ -27,7 +28,7 @@ all:
 	$(MAKE) $(NAME) 
 
 $(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
+	$(CC) $(LDFLAGS) $(CFLAGS) -o $(NAME) $(OBJS) 
 
 clean: 
 	$(RM) *.o $(NAME)

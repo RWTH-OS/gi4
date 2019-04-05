@@ -17,5 +17,5 @@ int main()
 
   printf("\noder...\n\n%s\n", lokalesArray);
   
-	return 0;
+  return 0;
 }

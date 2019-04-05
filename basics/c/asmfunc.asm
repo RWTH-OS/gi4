@@ -10,16 +10,15 @@ SECTION .text
 
 ; Funktionen implementieren
 asmfunc : 
-	push ebp		; neuer Stackframe erzeugen
-	mov ebp, esp
+	push rbp		; neuer Stackframe erzeugen
+	mov rbp, rsp
 
-	push msg
+	mov rdi, msg
 	call printf
-	add esp, 4
 
 	; Rückgabewert auf 0 setzen
 	mov eax, 0
 	
-	mov esp, ebp		; alter Stackframe restaurieren
-	pop ebp 
+	mov rsp, rbp		; alter Stackframe restaurieren
+	pop rbp 
 	ret			; Ruecksprung zum Aufrufer

@@ -9,17 +9,16 @@ SECTION .text
 	global asmfunc
 
 ; Funktionen implementieren
-asmfunc : 
-	push ebp			; neuer Stackframe erzeugen
-	mov ebp, esp
+asmfunc: 
+	push rbp			; neuer Stackframe erzeugen
+	mov rbp, rsp
 
-	push msg
+	mov rdi, msg
 	call printf
-	add esp, 4
 
 	; set return value to 0
-	mov eax, 0
+	mov rax, 0
 	
-	mov esp, ebp			; alter Stackframe restaurieren
-	pop ebp 
+	mov rsp, rbp	; alter Stackframe restaurieren
+	pop rbp 
 	ret				; zurueck zum Aufrufer
