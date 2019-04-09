@@ -24,7 +24,7 @@ all:
 	$(MAKE) $(NAME) 
 
 $(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
+	$(CC) -static $(CFLAGS) -o $(NAME) $(OBJS) 
 
 clean: 
 	$(RM) *.o $(NAME) 
