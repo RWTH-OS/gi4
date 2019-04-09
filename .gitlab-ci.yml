@@ -1,5 +1,5 @@
 variables:
-  IMAGE: rwthos/gi4
+  IMAGE: rwthos/gi4:with-flex
 
 stages:
   - prepare
@@ -8,7 +8,7 @@ stages:
 # Stage: prepare
 ##############################################################################
 
-.docker:
+docker:
   stage: prepare
   script:
     - docker build -t ${IMAGE} .
