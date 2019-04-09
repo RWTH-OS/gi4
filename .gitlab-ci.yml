@@ -1,0 +1,28 @@
+variables:
+  IMAGE: rwthos/gi4
+
+stages:
+  - prepare
+  - build
+
+# Stage: prepare
+##############################################################################
+
+.docker:
+  stage: prepare
+  script:
+    - docker build -t ${IMAGE} .
+  tags:
+    - shell
+    - linux
+
+# Stage: build
+##############################################################################
+
+build:
+  stage: build
+  script:
+    - make
+  image: ${IMAGE}
+  tags:
+    - docker
