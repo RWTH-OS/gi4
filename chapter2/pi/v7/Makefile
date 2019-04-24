@@ -4,12 +4,12 @@ CXX = g++
 # optimzation flags
 #CFLAGS = -Wall -O3
 # flags for debugging
-CFLAGS = -m32 -Wall -O0 -g -pthread
+CFLAGS = -fno-pie -no-pie -Wall -O0 -g -pthread
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = 
 RM = rm -rf
 ASM = nasm
-ASMFLAGS = -f elf32 -O0 -g -F dwarf
+ASMFLAGS = -f elf64 -O0 -g -F dwarf
 #ASMFLAGS = -f macho32 -O0 -g --prefix _
 NAME = pi_v7
 C_source = main.c
