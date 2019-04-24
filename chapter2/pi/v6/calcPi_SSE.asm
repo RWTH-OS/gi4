@@ -11,48 +11,48 @@ global hasSSE2
 ; Streng genommen muss vorher überprüft werden, ob die Instruktion "cpuid" vorhanden
 ; ist. Sie existiert erst seit 1993!
 hasSSE2:
-		push ebp
-		mov ebp, esp
+		push rbp
+		mov rbp, rsp
 
-		; cpuid überschreibt eax, ebx, ecx, edx => ebx, ecx sichern
-		push ebx
-		push ecx
+		; cpuid überschreibt rax, rbx, rcx, rdx => rbx, rcx sichern
+		push rbx
+		push rcx
 
 		; Beherrscht der Prozessor SSE2?
-		mov eax, 1
+		mov rax, 1
 		cpuid
-		and edx, 5000000h
-		cmp edx, 5000000h
+		and rdx, 5000000h
+		cmp rdx, 5000000h
 		jne not_supported
-		mov eax, 1
+		mov rax, 1
 		jmp done
 not_supported:
-		mov eax, 0
+		mov rax, 0
 done:
-		mov edx, 0
+		mov rdx, 0
 
-		pop ecx
-		pop ebx
+		pop rcx
+		pop rbx
 
-		; ebp restaurieren
-		pop ebp
+		; rbp restaurieren
+		pop rbp
 		ret
 
 calcPi_SSE:
-		push ebp
-		mov ebp, esp
+		push rbp
+		mov rbp, rsp
 	
-		push ebx
-		push ecx
+		push rbx
+		push rcx
 
-		xor ecx, ecx       		; ecx = i = 0
+		xor rcx, rcx       		; rcx = i = 0
 		xorpd xmm0, xmm0   		; xmm0 stellt sum dar
 		movsd xmm1, [step]		; initialisiere xmm1 mit step
 		shufpd xmm1, xmm1, 0x0
 		movapd xmm2, [ofs]		; initialisiere xmm2 mit (0.5, 1.5)
 
 L1:
-		cmp ecx, [num_steps]		; Abbruchbedingung überprüfen
+		cmp rcx, [num_steps]		; Abbruchbedingung überprüfen
 		jge L2
 		; Berechne (i+0.5f)*step
 		movapd 	xmm4, xmm1
@@ -69,7 +69,7 @@ L1:
 		; Laufzähler erhöhen und
 		; zum Schleifenanfang springen
 		addpd xmm2, [two]
-		add ecx, 2
+		add rcx, 2
 		jmp L1
 L2:
 		xorpd xmm3,xmm3   ; xmm3 mit 0 initialisieren
@@ -81,9 +81,9 @@ L2:
 		addsd xmm3, xmm0
 		movsd [sum], xmm3 ; Ergebnis zurückkopieren
 
-		pop ecx
-		pop ebx
+		pop rcx
+		pop rbx
 
-		; ebp restaurieren
-		pop ebp
+		; rbp restaurieren
+		pop rbp
 		ret 

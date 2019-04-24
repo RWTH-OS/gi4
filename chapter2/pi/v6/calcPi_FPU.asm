@@ -8,23 +8,23 @@ extern step, sum, num_steps,four
 global calcPi_FPU
 
 calcPi_FPU:
-	push ebp	; neuer Stackframe erzeugen
-	mov ebp, esp
+	push rbp	; neuer Stackframe erzeugen
+	mov rbp, rsp
 
-	push ebx
-	push ecx
+	push rbx
+	push rcx
 
-	xor ecx, ecx	; ecx = i = 0
+	xor rcx, rcx	; rcx = i = 0
 
 L1:
-	cmp ecx, [num_steps]	; Abbruchbedingung überprüfen
+	cmp rcx, [num_steps]	; Abbruchbedingung überprüfen
 	jge L2
 
 	; Berechne (i+0.5f)*step
 	fld qword [half]
-	push ecx
-	fild dword [esp]
-	add esp, 4
+	push rcx
+	fild dword [rsp]
+	add rsp, 4
 	faddp st1, st0    ; st1 = i + 0.5, pop st0
 	fmul qword [step]
 
@@ -41,14 +41,14 @@ L1:
 	fadd qword [sum]
 	fstp qword [sum]
 
-	inc ecx
+	inc rcx
 	jmp L1
 L2:
 	
-	pop ecx
-	pop ebx
+	pop rcx
+	pop rbx
 
-	mov esp, ebp	; alter Stackframe restaurieren
-	pop ebp	
+	mov rsp, rbp	; alter Stackframe restaurieren
+	pop rbp	
 
 	ret
