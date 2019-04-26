@@ -7,16 +7,16 @@ extern step, sum,num_steps,four,two,one,ofs
 global calcPi_SSE
 global hasSSE2
 
-; Mit cpuid kann �berpr�ft werden, welche "Features" der Prozessor unterst�tzt.
-; Bevor man Instruktionserweiterungen verwendet, sollte hiermit �berpr�ft werden,
+; Mit cpuid kann ueberprueft werden, welche "Features" der Prozessor unterstuetzt.
+; Bevor man Instruktionserweiterungen verwendet, sollte hiermit ueberprueft werden,
 ; ob diese vorhanden sind.
-; Streng genommen muss vorher �berpr�ft werden, ob die Instruktion "cpuid" vorhanden
+; Streng genommen muss vorher ueberprueft werden, ob die Instruktion "cpuid" vorhanden
 ; ist. Sie existiert erst seit 1993!
 hasSSE2:
 		push rbp
 		mov rbp, rsp
 
-		; cpuid �berschreibt rax, rbx, rcx, rdx => rbx, rcx sichern
+		; cpuid ueberschreibt rax, rbx, rcx, rdx => rbx, rcx sichern
 		push rbx
 		push rcx
 
@@ -54,21 +54,21 @@ calcPi_SSE:
 		movapd xmm2, [ofs]		; initialisiere xmm2 mit (0.5, 1.5)
 
 L1:
-		cmp rcx, [num_steps]		; Abbruchbedingung �berpr�fen
+		cmp rcx, [num_steps]		; Abbruchbedingung ueberpruefen
 		jge L2
 		; Berechne (i+0.5f)*step
 		movapd 	xmm4, xmm1
 		mulpd 	xmm4, xmm2
 		; Quadriere das Zwischenergebniss
-		; und erh�he um eins
+		; und erhoehe um eins
 		mulpd xmm4, xmm4
 		addpd xmm4, [one]
 		; teile 4 durch das Zwischenergebnis
 		movapd	xmm3, [four]
 		divpd 	xmm3, xmm4
-		; Summiere die ermittelten Rechtecksh�hen auf
+		; Summiere die ermittelten Rechteckshoehen auf
 		addpd xmm0, xmm3
-		; Laufz�hler erh�hen und
+		; Laufzaehler erhoehen und
 		; zum Schleifenanfang springen
 		addpd xmm2, [two]
 		add rcx, 2
@@ -81,7 +81,7 @@ L2:
 		shufpd xmm0, xmm0, 0x1
 		; 1. Element von xmm0 zu xmm3 addieren
 		addsd xmm3, xmm0
-		movsd [sum], xmm3 ; Ergebnis zur�ckkopieren
+		movsd [sum], xmm3 ; Ergebnis zurueckkopieren
 
 		pop rcx
 		pop rbx

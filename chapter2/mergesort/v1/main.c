@@ -23,7 +23,7 @@ void merge(int lo, int m, int hi)
 	j = m + 1;
 	k = lo;
 
-	/* jeweils das naechstgroe�te Element zurueckkopieren */
+	/* jeweils das naechstgroesste Element zurueckkopieren */
 	while ((i <= m) && (j <= hi)) {
 		if (b[i] <= b[j])
 			a[k++] = b[i++];

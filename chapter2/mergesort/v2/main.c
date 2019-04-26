@@ -30,7 +30,7 @@ void merge(int lo, int m, int hi)
 	j = m + 1;
 	k = lo;
 
-	/* jeweils das naechstgroeﬂte Element zurueckkopieren */
+	/* jeweils das naechstgroesste Element zurueckkopieren */
 	while ((i <= m) && (j <= hi)) {
 		if (b[i] <= b[j])
 			a[k++] = b[i++];
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
 
 	gettimeofday(&start, NULL);
 
-	/* Initialisieren der Argumente f¸r die Einstiegsfunktion */
+	/* Initialisieren der Argumente fuer die Einstiegsfunktion */
 	thr_arg.lo = 0;
 	thr_arg.hi = N - 1;
 	thr_arg.count = 1;
