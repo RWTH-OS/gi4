@@ -17,16 +17,16 @@ calcPi_FPU:
 	xor rcx, rcx	; rcx = i = 0
 
 L1:
-	cmp rcx, [num_steps]	; Abbruchbedingung überprüfen
+	cmp rcx, [rel num_steps]	; Abbruchbedingung überprüfen
 	jge L2
 
 	; Berechne (i+0.5f)*step
-	fld qword [half]
+	fld qword [rel half]
 	push rcx
 	fild dword [rsp]
 	add rsp, 4
 	faddp st1, st0    ; st1 = i + 0.5, pop st0
-	fmul qword [step]
+	fmul qword [rel step]
 
 	; Quadriere das Zwischenergebnis
         ; und es erhöhe um eins
@@ -35,11 +35,11 @@ L1:
 	faddp st1, st0
 	
 	; teile 4 durch das Zwischenergebnis
-	fdivr qword [four]
+	fdivr qword [rel four]
 
 	; Aufsummieren
-	fadd qword [sum]
-	fstp qword [sum]
+	fadd qword [rel sum]
+	fstp qword [rel sum]
 
 	inc rcx
 	jmp L1

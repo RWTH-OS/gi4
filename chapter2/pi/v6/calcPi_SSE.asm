@@ -5,16 +5,16 @@ extern step, sum,num_steps,four,two,one,ofs
 global calcPi_SSE
 global hasSSE2
 
-; Mit cpuid kann überprüft werden, welche "Features" der Prozessor unterstützt.
-; Bevor man Instruktionserweiterungen verwendet, sollte hiermit überprüft werden,
+; Mit cpuid kann ï¿½berprï¿½ft werden, welche "Features" der Prozessor unterstï¿½tzt.
+; Bevor man Instruktionserweiterungen verwendet, sollte hiermit ï¿½berprï¿½ft werden,
 ; ob diese vorhanden sind.
-; Streng genommen muss vorher überprüft werden, ob die Instruktion "cpuid" vorhanden
+; Streng genommen muss vorher ï¿½berprï¿½ft werden, ob die Instruktion "cpuid" vorhanden
 ; ist. Sie existiert erst seit 1993!
 hasSSE2:
 		push rbp
 		mov rbp, rsp
 
-		; cpuid überschreibt rax, rbx, rcx, rdx => rbx, rcx sichern
+		; cpuid ï¿½berschreibt rax, rbx, rcx, rdx => rbx, rcx sichern
 		push rbx
 		push rcx
 
@@ -47,28 +47,28 @@ calcPi_SSE:
 
 		xor rcx, rcx       		; rcx = i = 0
 		xorpd xmm0, xmm0   		; xmm0 stellt sum dar
-		movsd xmm1, [step]		; initialisiere xmm1 mit step
+		movsd xmm1, [rel step]		; initialisiere xmm1 mit step
 		shufpd xmm1, xmm1, 0x0
-		movapd xmm2, [ofs]		; initialisiere xmm2 mit (0.5, 1.5)
+		movapd xmm2, [rel ofs]		; initialisiere xmm2 mit (0.5, 1.5)
 
 L1:
-		cmp rcx, [num_steps]		; Abbruchbedingung überprüfen
+		cmp rcx, [rel num_steps]		; Abbruchbedingung ï¿½berprï¿½fen
 		jge L2
 		; Berechne (i+0.5f)*step
 		movapd 	xmm4, xmm1
 		mulpd 	xmm4, xmm2
 		; Quadriere das Zwischenergebniss
-		; und erhöhe um eins
+		; und erhï¿½he um eins
 		mulpd xmm4, xmm4
-		addpd xmm4, [one]
+		addpd xmm4, [rel one]
 		; teile 4 durch das Zwischenergebnis
-		movapd	xmm3, [four]
+		movapd	xmm3, [rel four]
 		divpd 	xmm3, xmm4
-		; Summiere die ermittelten Rechteckshöhen auf
+		; Summiere die ermittelten Rechteckshï¿½hen auf
 		addpd xmm0, xmm3
-		; Laufzähler erhöhen und
+		; Laufzï¿½hler erhï¿½hen und
 		; zum Schleifenanfang springen
-		addpd xmm2, [two]
+		addpd xmm2, [rel two]
 		add rcx, 2
 		jmp L1
 L2:
@@ -79,7 +79,7 @@ L2:
 		shufpd xmm0, xmm0, 0x1
 		; 1. Element von xmm0 zu xmm3 addieren
 		addsd xmm3, xmm0
-		movsd [sum], xmm3 ; Ergebnis zurückkopieren
+		movsd [rel sum], xmm3 ; Ergebnis zurï¿½ckkopieren
 
 		pop rcx
 		pop rbx
