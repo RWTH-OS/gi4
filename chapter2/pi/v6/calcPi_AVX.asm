@@ -2,7 +2,7 @@ DEFAULT REL
 
 SECTION .text
 
-extern step, sum,num_steps,four,two,one,ofs
+extern step, sum, num_steps, four, two, one, ofs
 
 global calcPi_AVX
 global hasAVX

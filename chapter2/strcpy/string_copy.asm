@@ -7,7 +7,7 @@ string_copy:
   xor rcx, rcx
   xor rdx, rdx
 
-  ;aufrunf in main >> string_copy(string,"Hallo Welt");
+  ; aufruf in main >> string_copy(string, "Hallo Welt");
   ; stack >>
   ;		RA	>> rbp+8
   ; rdi >> 1. Argument

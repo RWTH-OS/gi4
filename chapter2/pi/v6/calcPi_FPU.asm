@@ -5,7 +5,7 @@ SECTION .data
 
 SECTION .text
 
-extern step, sum, num_steps,four
+extern step, sum, num_steps, four
 
 global calcPi_FPU
 

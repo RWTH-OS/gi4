@@ -1,7 +1,7 @@
 extern printf ; forward declaration of printf
 
 SECTION .data
-	msg db 'Hello from asmfunc!',10,0 
+	msg db 'Hello from asmfunc!', 10, 0 
 
 SECTION .text
 

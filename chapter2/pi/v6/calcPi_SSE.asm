@@ -2,7 +2,7 @@ DEFAULT REL
 
 SECTION .text
 
-extern step, sum,num_steps,four,two,one,ofs
+extern step, sum, num_steps, four, two, one, ofs
 
 global calcPi_SSE
 global hasSSE2
@@ -74,7 +74,7 @@ L1:
 		add rcx, 2
 		jmp L1
 L2:
-		xorpd xmm3,xmm3   ; xmm3 mit 0 initialisieren
+		xorpd xmm3, xmm3   ; xmm3 mit 0 initialisieren
 		; 1. Element von xmm0 zu xmm3 addieren
 		addsd xmm3, xmm0
 		; 1. Element von xmm0 durch das 2. ersetzen

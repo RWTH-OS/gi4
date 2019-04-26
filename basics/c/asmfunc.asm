@@ -1,7 +1,7 @@
 extern printf ; externe Funktion printf deklarieren
 
 SECTION .data
-	msg db 'Hello from asmfunc!',10,0 
+	msg db 'Hello from asmfunc!', 10, 0 
 
 SECTION .text
 
