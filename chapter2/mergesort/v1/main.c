@@ -23,7 +23,7 @@ void merge(int lo, int m, int hi)
 	j = m + 1;
 	k = lo;
 
-	/* jeweils das naechstgroeßte Element zurueckkopieren */
+	/* jeweils das naechstgroeï¿½te Element zurueckkopieren */
 	while ((i <= m) && (j <= hi)) {
 		if (b[i] <= b[j])
 			a[k++] = b[i++];
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 
 	printf("Initialisiere Feld...\n");
 	for (i = 0; i < N; i++)
-		a[i] = (int) (((double)rand() / (double)(RAND_MAX + 1)) * (RANGE_MAX - RANGE_MIN) + RANGE_MIN);
+		a[i] = (int) (((double)rand() / ((double) RAND_MAX + 1)) * (RANGE_MAX - RANGE_MIN) + RANGE_MIN);
 
 	printf("Sortiere Feld...\n");
 
