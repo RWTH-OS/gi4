@@ -4,8 +4,8 @@ CXX = g++
 # optimzation flags
 #CFLAGS = -Wall -O3
 # flags for debugging
-CFLAGS = -m32 -Wall -O0 -g
-#CFLAGS = -m32 -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
+#CFLAGS = -m32 -Wall -O0 -g
+CFLAGS = -m32 -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = 
 RM = rm -rf

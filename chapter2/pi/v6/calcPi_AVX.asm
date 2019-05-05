@@ -69,7 +69,7 @@ L1:
 		; und erhöhe um eins
 		vmulpd ymm4, ymm4, ymm4
 		vaddpd ymm4, ymm4, [one]
-%if 1
+%if 1 
 		; teile 4 durch das Zwischenergebnis
 		vdivpd 	ymm4, ymm3, ymm4
 %else
