@@ -1,3 +1,5 @@
+DEFAULT REL
+
 SECTION .text
 
 extern step, sum,num_steps,four,two,one,ofs
@@ -56,19 +58,19 @@ calcPi_AVX:
 
 		xor rcx, rcx       		; rcx = i = 0
 		vxorpd ymm0, ymm0, ymm0   	; ymm0 stellt sum dar
-		vbroadcastsd ymm1, [rel step] 	; initialisiere ymm1 mit step
-		vmovapd ymm2, [rel ofs]		; initialisiere ymm2 mit (0.5, 1.5, 2.5, 3.5)
-		vmovapd ymm3, [rel four] 		; initialisiere ymm3 mit (4.0, 4.0, 4.0, 4.0)
+		vbroadcastsd ymm1, [step] 	; initialisiere ymm1 mit step
+		vmovapd ymm2, [ofs]		; initialisiere ymm2 mit (0.5, 1.5, 2.5, 3.5)
+		vmovapd ymm3, [four] 		; initialisiere ymm3 mit (4.0, 4.0, 4.0, 4.0)
 
 L1:
-		cmp rcx, [rel num_steps]		; Abbruchbedingung überprüfen
+		cmp rcx, [num_steps]		; Abbruchbedingung überprüfen
 		jge L2
 		; Berechne (i+0.5)*step
 		vmulpd 	ymm4, ymm1, ymm2
 		; Quadriere das Zwischenergebniss
 		; und erhöhe um eins
 		vmulpd ymm4, ymm4, ymm4
-		vaddpd ymm4, ymm4, [rel one]
+		vaddpd ymm4, ymm4, [one]
 %if 1
 		; teile 4 durch das Zwischenergebnis
 		vdivpd 	ymm4, ymm3, ymm4
@@ -108,7 +110,7 @@ L2:
 		vperm2f128 ymm3, ymm0, ymm0, 0x1 ; tausche die niedrigen mit den höheren 128 Bits
 		vaddpd ymm3, ymm3, ymm0  ; implizit werden die oberen mit den niedrigen 128 Bits addiert
 		vhaddpd ymm3, ymm3, ymm3 ; die unteren beiden Zahlen addiert
-		vmovsd [rel sum], xmm3 ; Ergebnis zurückkopieren
+		vmovsd [sum], xmm3 ; Ergebnis zurückkopieren
 
 		pop rcx
 		pop rbx

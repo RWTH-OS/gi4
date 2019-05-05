@@ -1,3 +1,5 @@
+DEFAULT REL
+
 SECTION .data
 	half dq 0.5  ; declare quad word (double precision)
 
@@ -17,16 +19,16 @@ calcPi_FPU:
 	xor rcx, rcx	; rcx = i = 0
 
 L1:
-	cmp rcx, [rel num_steps]	; Abbruchbedingung überprüfen
+	cmp rcx, [num_steps]	; Abbruchbedingung überprüfen
 	jge L2
 
 	; Berechne (i+0.5f)*step
-	fld qword [rel half]
+	fld qword [half]
 	push rcx
 	fild dword [rsp]
 	add rsp, 4
 	faddp st1, st0    ; st1 = i + 0.5, pop st0
-	fmul qword [rel step]
+	fmul qword [step]
 
 	; Quadriere das Zwischenergebnis
         ; und es erhöhe um eins
@@ -35,11 +37,11 @@ L1:
 	faddp st1, st0
 	
 	; teile 4 durch das Zwischenergebnis
-	fdivr qword [rel four]
+	fdivr qword [four]
 
 	; Aufsummieren
-	fadd qword [rel sum]
-	fstp qword [rel sum]
+	fadd qword [sum]
+	fstp qword [sum]
 
 	inc rcx
 	jmp L1

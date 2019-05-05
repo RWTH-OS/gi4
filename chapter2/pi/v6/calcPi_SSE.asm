@@ -1,3 +1,5 @@
+DEFAULT REL
+
 SECTION .text
 
 extern step, sum,num_steps,four,two,one,ofs
@@ -47,12 +49,12 @@ calcPi_SSE:
 
 		xor rcx, rcx       		; rcx = i = 0
 		xorpd xmm0, xmm0   		; xmm0 stellt sum dar
-		movsd xmm1, [rel step]		; initialisiere xmm1 mit step
+		movsd xmm1, [step]		; initialisiere xmm1 mit step
 		shufpd xmm1, xmm1, 0x0
-		movapd xmm2, [rel ofs]		; initialisiere xmm2 mit (0.5, 1.5)
+		movapd xmm2, [ofs]		; initialisiere xmm2 mit (0.5, 1.5)
 
 L1:
-		cmp rcx, [rel num_steps]		; Abbruchbedingung �berpr�fen
+		cmp rcx, [num_steps]		; Abbruchbedingung �berpr�fen
 		jge L2
 		; Berechne (i+0.5f)*step
 		movapd 	xmm4, xmm1
@@ -60,15 +62,15 @@ L1:
 		; Quadriere das Zwischenergebniss
 		; und erh�he um eins
 		mulpd xmm4, xmm4
-		addpd xmm4, [rel one]
+		addpd xmm4, [one]
 		; teile 4 durch das Zwischenergebnis
-		movapd	xmm3, [rel four]
+		movapd	xmm3, [four]
 		divpd 	xmm3, xmm4
 		; Summiere die ermittelten Rechtecksh�hen auf
 		addpd xmm0, xmm3
 		; Laufz�hler erh�hen und
 		; zum Schleifenanfang springen
-		addpd xmm2, [rel two]
+		addpd xmm2, [two]
 		add rcx, 2
 		jmp L1
 L2:
@@ -79,7 +81,7 @@ L2:
 		shufpd xmm0, xmm0, 0x1
 		; 1. Element von xmm0 zu xmm3 addieren
 		addsd xmm3, xmm0
-		movsd [rel sum], xmm3 ; Ergebnis zur�ckkopieren
+		movsd [sum], xmm3 ; Ergebnis zur�ckkopieren
 
 		pop rcx
 		pop rbx
