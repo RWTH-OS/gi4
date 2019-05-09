@@ -7,7 +7,7 @@ CXX = g++
 #CFLAGS = -Wall -O0 -g
 CFLAGS = -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = 
+LDFLAGS =
 RM = rm -rf
 ASM = nasm
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
@@ -23,7 +23,7 @@ OBJS += $(patsubst %.asm, %.o, $(filter %.asm, $(ASM_source)))
 
 # other implicit rules
 %.o : %.c
-	$(CC) -c $(CFLAGS) -o $@ $< 
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

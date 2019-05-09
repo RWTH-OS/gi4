@@ -5,7 +5,7 @@ SECTION .data
 
 SECTION .text
 
-extern step, sum, num_steps,four
+extern step, sum, num_steps, four
 
 global calcPi_FPU
 
@@ -35,7 +35,7 @@ L1:
 	fmul st0, st0
 	fld1              ; st0 = 1.0
 	faddp st1, st0
-	
+
 	; teile 4 durch das Zwischenergebnis
 	fdivr qword [four]
 
@@ -46,11 +46,11 @@ L1:
 	inc rcx
 	jmp L1
 L2:
-	
+
 	pop rcx
 	pop rbx
 
 	mov rsp, rbp	; alter Stackframe restaurieren
-	pop rbp	
+	pop rbp
 
 	ret

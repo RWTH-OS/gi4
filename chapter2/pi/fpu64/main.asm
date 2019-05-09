@@ -57,7 +57,7 @@ L1:
 	fmul st0, st0
 	fld1              ; st0 = 1.0
 	faddp st1, st0
-	
+
 	; teile 4 durch das Zwischenergebnis
 	fdivr qword [four]
 
@@ -72,7 +72,7 @@ L2:
 	fld qword [sum]
 	fmul qword [step]
 
-	; Die ersten sechs Ganzzahlen oder Zeiger  werden über die Register 
+	; Die ersten sechs Ganzzahlen oder Zeiger  werden über die Register
 	; RDI, RSI, RDX, RCX, R8, and R9 übergeben.
 	; => siehe auch fastcall unter 32bit
 	;
@@ -107,7 +107,7 @@ L2:
 	; => Wenn -- wie hier --  mit -g compiliert wird,
 	;    sollte er wie üblich verwendet werden.
 	mov rsp, rbp	; alter Stackframe restaurieren
-	pop rbp	
+	pop rbp
 
 	; Programm verlassen & signalisieren,
 	; dass bei bei der Ausführung kein Fehler
@@ -116,4 +116,4 @@ L2:
 	mov rax, 93 ; Nummer des Systemaufrufs "exit"
 	syscall
 	; oder auch
-	; int 0x80 
+	; int 0x80

@@ -1,7 +1,7 @@
 /*
  * Simple Go example, start programm with following command:
  *
- *  go run main.go 
+ *  go run main.go
  */
 package main
 
@@ -40,7 +40,7 @@ func main() {
 	}
 
 	elapsed := time.Since(start)
-	
+
 	fmt.Println("Pi   : ", sum*step)
 	fmt.Println("Time : ", elapsed)
 }

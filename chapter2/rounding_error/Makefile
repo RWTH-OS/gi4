@@ -1,7 +1,7 @@
 CC = gcc
 
 CFLAGS = -O0 -Wall
-LDFLAGS = 
+LDFLAGS =
 
 all: 	main
 
@@ -11,5 +11,5 @@ main:	main.o
 main.o:	main.c
 	$(CC) -c $(CFLAGS) main.c -o main.o
 
-clean:	
+clean:
 	rm -f main.o main

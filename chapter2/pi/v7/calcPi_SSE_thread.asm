@@ -1,7 +1,7 @@
 DEFAULT REL
 
 SECTION .text
-	extern ofs, one, two, four,step
+	extern ofs, one, two, four, step
 	global calcPi_SSE_thread
 
 calcPi_SSE_thread:
@@ -47,8 +47,8 @@ L1:
 	jmp L1
 L2:
 	; sum = xmm0[0] + xmm0[1]
-	xorpd xmm3,xmm3   
-	xor rdx,rdx		
+	xorpd xmm3, xmm3
+	xor rdx, rdx
 	addsd xmm3, xmm0
 	shufpd xmm0, xmm0, 0x1
 	addsd xmm3, xmm0

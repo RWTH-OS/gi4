@@ -29,7 +29,7 @@ void calcPi_intrinsic(void)
 	__m128d xmm0 = {0.0, 0.0};
 	__m128d xmm1 = {step, step};
 	__m128d xmm2 = *((__m128d*)ofs);
-	__m128d xmm3, xmm4; 
+	__m128d xmm3, xmm4;
 	int i;
 
 	for(i = 0; i < num_steps; i+=2) {

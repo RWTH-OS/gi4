@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 		num_steps = 1000000;
 
 	printf("\nnum_steps = %d\n", (int)num_steps);
-	
+
 	gettimeofday(&start, NULL);
 
 	sum = 0.0;
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 		pthread_create(&(threads[i]), NULL, thread_func, &(thr_arg[i]));
 	}
 
-	/* Wait until all threads have terminated 
+	/* Wait until all threads have terminated
 	   and calculate sum*/
 	for (i = 0; i < MAX_THREADS; i++) {
 		pthread_join(threads[i], NULL);
