@@ -100,7 +100,7 @@ int main(int argc, char **argv)
 	pthread_t thread;
 	thread_param thr_arg;
 
-	/* 
+	/*
 	 *"seed" auf die aktuelle Zeit setzen, um
 	 * nicht immer die selben Zufallszahlen zu erhalten
 	 */

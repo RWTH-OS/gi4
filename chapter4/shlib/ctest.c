@@ -3,7 +3,7 @@
 
 static void __attribute__ ((constructor)) _init(void);
 static void __attribute__ ((destructor)) _fini(void);
- 
+
 static void _init(void)
 {
 	printf("Library initialized\n");

@@ -1,7 +1,7 @@
 extern printf ; forward declaration of printf
 
 SECTION .data
-	msg db 'Hello from asmfunc!', 10, 0 
+	msg db 'Hello from asmfunc!', 10, 0
 
 SECTION .text
 
@@ -9,7 +9,7 @@ SECTION .text
 	global asmfunc
 
 ; Funktionen implementieren
-asmfunc: 
+asmfunc:
 	push rbp			; neuer Stackframe erzeugen
 	mov rbp, rsp
 
@@ -18,7 +18,7 @@ asmfunc:
 
 	; set return value to 0
 	mov rax, 0
-	
+
 	mov rsp, rbp	; alter Stackframe restaurieren
-	pop rbp 
+	pop rbp
 	ret				; zurueck zum Aufrufer

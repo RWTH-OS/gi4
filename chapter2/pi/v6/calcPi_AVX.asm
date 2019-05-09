@@ -52,7 +52,7 @@ done:
 calcPi_AVX:
 		push rbp
 		mov rbp, rsp
-	
+
 		push rbx
 		push rcx
 
@@ -90,7 +90,7 @@ L1:
 		vaddpd   ymm4, ymm4
 		vsubpd   ymm4, ymm5
 		; Die Genauigkeit ist nun 2^-23
-		; => noch eine Iteration, um eine doppelte Genauigkeit (nach IEEE) 
+		; => noch eine Iteration, um eine doppelte Genauigkeit (nach IEEE)
 		; zu erzielen.
 		vmulpd   ymm6, ymm4
 		vmulpd   ymm6, ymm4
@@ -98,7 +98,7 @@ L1:
 		vsubpd   ymm4, ymm6
 		; mit 4 multiplizieren
 		vmulpd   ymm4, ymm3
-%endif 
+%endif
 		; Summiere die ermittelten Rechteckshöhen auf
 		vaddpd ymm0, ymm0, ymm4
 		; Laufzähler erhöhen und
@@ -117,4 +117,4 @@ L2:
 
 		; rbp restaurieren
 		pop rbp
-		ret 
+		ret

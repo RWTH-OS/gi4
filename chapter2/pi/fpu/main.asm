@@ -47,7 +47,7 @@ L1:
 	fmul st0, st0
 	fld1              ; st0 = 1.0
 	faddp st1, st0
-	
+
 	; teile 4 durch das Zwischenergebnis
 	fdivr qword [four]
 
@@ -66,12 +66,12 @@ L2:
 	push msg
 	call printf
 	add esp, 12
-	
+
 	pop ecx
 	pop ebx
 
 	mov esp, ebp	; alter Stackframe restaurieren
-	pop ebp	
+	pop ebp
 
 	; Programm verlassen & signalisieren,
 	; dass bei bei der Ausführung kein Fehler

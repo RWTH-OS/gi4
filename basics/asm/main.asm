@@ -20,7 +20,7 @@ main:
 	; ersetzt werden.
 	call asmfunc
 
-	pop rbp     ; alter Stackframe restaurieren	
+	pop rbp     ; alter Stackframe restaurieren
 
 	; Programm verlassen & signalisieren,
 	; dass bei bei der Ausführung kein Fehler

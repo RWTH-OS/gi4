@@ -1,7 +1,7 @@
 SECTION .text
   global string_copy
 
-string_copy: 
+string_copy:
   push rbp
   mov rbp, rsp
   xor rcx, rcx
@@ -14,7 +14,7 @@ string_copy:
   ; rsi >> 2. Argument
   ;///////////////////////////////////////////////////
 
-L1:	
+L1:
   mov dl, [rsi+rcx]
   mov [rdi+rcx], dl
   cmp dl, 0

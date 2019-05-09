@@ -43,7 +43,7 @@ done:
 calcPi_SSE:
 		push rbp
 		mov rbp, rsp
-	
+
 		push rbx
 		push rcx
 
@@ -88,4 +88,4 @@ L2:
 
 		; rbp restaurieren
 		pop rbp
-		ret 
+		ret

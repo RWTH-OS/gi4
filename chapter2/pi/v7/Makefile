@@ -6,7 +6,7 @@ CXX = g++
 # flags for debugging
 CFLAGS = -Wall -O0 -g -pthread
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = 
+LDFLAGS =
 RM = rm -rf
 ASM = nasm
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
@@ -22,7 +22,7 @@ OBJS += $(patsubst %.asm, %.o, $(filter %.asm, $(ASM_source)))
 
 # other implicit rules
 %.o : %.c
-	$(CC) -c $(CFLAGS) -o $@ $< 
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

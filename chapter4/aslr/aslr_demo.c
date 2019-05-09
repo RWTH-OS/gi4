@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 
- * Der Linker definiert diese Symbole, deren Adressen der Beginn 
+/*
+ * Der Linker definiert diese Symbole, deren Adressen der Beginn
  * des BSS- & Data-Segements repräsentieren.
  */
 extern void __bss_start;

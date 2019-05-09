@@ -1,32 +1,32 @@
-#ACHTUNG: alle *.asm u. *.c Dateien im Ordner dieses Makefiles 
+#ACHTUNG: alle *.asm u. *.c Dateien im Ordner dieses Makefiles
 #         werden zur ausführbaren Datei "start" zusammengebunden!
-MAKE = make 
-CC = gcc 
+MAKE = make
+CC = gcc
 CFLAGS = -m64 -Wall -O0 -g #-pthread, nur für POSIX-Threads notwendig
-RM = rm -rf                #rm = Unix-Befehl remove = Dateien löschen 
-ASM = nasm 
+RM = rm -rf                #rm = Unix-Befehl remove = Dateien löschen
+ASM = nasm
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
 
-NAME = maximum # Name des Programms/der ausführbaren Datei 
+NAME = maximum # Name des Programms/der ausführbaren Datei
 
 # Objekt-Datei-Liste generieren aus Quell-Datei-Listen
-OBJS  = $(patsubst %.c, %.o, $(wildcard *.c)) 
-OBJS += $(patsubst %.asm, %.o, $(wildcard *.asm)) 
+OBJS  = $(patsubst %.c, %.o, $(wildcard *.c))
+OBJS += $(patsubst %.asm, %.o, $(wildcard *.asm))
 
 .PHONY: clean
 
-# Erzeugung von Objektdateien (*.o) aus den Quellcodedateien (*.c u. *.asm) 
-%.o : %.c 
-	$(CC) -c $(CFLAGS) -o $@ $< 
+# Erzeugung von Objektdateien (*.o) aus den Quellcodedateien (*.c u. *.asm)
+%.o : %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
 
-%.o : %.asm 
-	$(ASM) $(ASMFLAGS) -o $@ $< 
+%.o : %.asm
+	$(ASM) $(ASMFLAGS) -o $@ $<
 
-all: 
-	$(MAKE) $(NAME) 
+all:
+	$(MAKE) $(NAME)
 
-$(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-clean: 
-	$(RM) *.o $(NAME) 
+clean:
+	$(RM) *.o $(NAME)
