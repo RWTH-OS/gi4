@@ -11,7 +11,7 @@ ASMFLAGS = -f macho64 -O0 -g
 LDFLAGS = -Wl,-no_pie
 else
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
-LDFLAGS = -static -Wl,-no_pie
+LDFLAGS = -static
 endif
 
 NAME = start # Name des Programms/der ausführbaren Datei
