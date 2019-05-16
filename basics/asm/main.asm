@@ -5,11 +5,19 @@ SECTION .data
 
 SECTION .text
 
+%ifidn __OUTPUT_FORMAT__, macho64
+; oeffentliche Functionen deklarieren
+global _main
+
+; Funktionen implementieren
+_main:
+%else
 ; oeffentliche Functionen deklarieren
 global main
 
 ; Funktionen implementieren
 main:
+%endif
 	push rbp	; neuer Stackframe erzeugen
 	mov rbp, rsp
 
@@ -25,6 +33,5 @@ main:
 	; Programm verlassen & signalisieren,
 	; dass bei bei der Ausführung kein Fehler
 	; aufgetreten ist.
-	mov ebx, 0
-	mov eax, 1
-	int 0x80
+	mov rax, 0
+	ret

@@ -1,12 +1,18 @@
 #ACHTUNG: alle *.asm u. *.c Dateien im Ordner dieses Makefiles 
 #         werden zur ausführbaren Datei "start" zusammengebunden!
+UNAME := $(shell uname)
 MAKE = make 
 CC = gcc 
 CFLAGS = -Wall -O0 -g #-pthread, nur für POSIX-Threads notwendig
-LDFLAGS = -static
 RM = rm -rf                #rm = Unix-Befehl remove = Dateien löschen 
 ASM = nasm 
+ifeq ($(UNAME), Darwin)
+ASMFLAGS = -f macho64 -O0 -g
+LDFLAGS =
+else
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
+LDFLAGS = -static
+endif
 
 NAME = start # Name des Programms/der ausführbaren Datei 
 
