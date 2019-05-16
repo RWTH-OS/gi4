@@ -12,14 +12,12 @@ SECTION .data
 
 SECTION .text
 
-; oeffentliche Funktionen deklarieren
-	global asmfunc
-
 ; Funktionen implementieren
 %ifidn __OUTPUT_FORMAT__, macho64
 global _asmfunc
 _asmfunc:
 %else
+global asmfunc
 asmfunc :
 %endif
 	push rbp		; neuer Stackframe erzeugen
