@@ -30,3 +30,28 @@
 
 # Debug files
 *.dSYM/
+
+basics/asm/start
+basics/c/.depend
+basics/c/start
+basics/einfach/.depend
+basics/einfach/start
+chapter1/main
+chapter2/maximum/.vscode/
+chapter2/maximum/maximum
+chapter2/mergesort/v1/merge_v1
+chapter2/mergesort/v2/merge_v2
+chapter2/pi/fpu/start
+chapter2/pi/fpu64/start
+chapter2/pi/v1/pi_v1
+chapter2/pi/v2/pi_v2
+chapter2/pi/v3/pi_v3
+chapter2/pi/v4/pi_v4
+chapter2/pi/v5/pi_v5
+chapter2/pi/v6/pi_v6
+chapter2/pi/v7/pi_v7
+chapter2/rounding_error/main
+chapter4/aslr/aslr_demo
+chapter4/shlib/prog
+chapter5/lex/lex.yy.c
+chapter5/lex/varcounter

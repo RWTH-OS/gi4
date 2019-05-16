@@ -1,4 +1,4 @@
-#ACHTUNG: alle *.asm u. *.c Dateien im Ordner dieses Makefiles 
+#ACHTUNG: alle *.asm u. *.c Dateien im Ordner dieses Makefiles
 #         werden zur ausführbaren Datei "start" zusammengebunden!
 UNAME := $(shell uname)
 MAKE = make 
@@ -13,29 +13,29 @@ ASMFLAGS = -f elf64 -O0 -g -F dwarf
 LDFLAGS = -static -Wl,-no_pie
 endif
 
-NAME = start # Name des Programms/der ausführbaren Datei 
+NAME = start # Name des Programms/der ausführbaren Datei
 
 # Objekt-Datei-Liste generieren aus Quell-Datei-Listen
-OBJS  = $(patsubst %.c, %.o, $(wildcard *.c)) 
-OBJS += $(patsubst %.asm, %.o, $(wildcard *.asm)) 
+OBJS  = $(patsubst %.c, %.o, $(wildcard *.c))
+OBJS += $(patsubst %.asm, %.o, $(wildcard *.asm))
 SRC = $(wildcard *.c)
 
 .PHONY: clean
 
-# Erzeugung von Objektdateien (*.o) aus den Quellcodedateien (*.c u. *.asm) 
-%.o : %.c 
-	$(CC) -c $(CFLAGS) -o $@ $< 
+# Erzeugung von Objektdateien (*.o) aus den Quellcodedateien (*.c u. *.asm)
+%.o : %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
 
-%.o : %.asm 
-	$(ASM) $(ASMFLAGS) -o $@ $< 
+%.o : %.asm
+	$(ASM) $(ASMFLAGS) -o $@ $<
 
-all: 
-	$(MAKE) $(NAME) 
+all:
+	$(MAKE) $(NAME)
 
-$(NAME): $(OBJS) 
-	$(CC) $(LDFLAGS) $(CFLAGS) -o $(NAME) $(OBJS) 
+$(NAME): $(OBJS)
+	$(CC) $(LDFLAGS) $(CFLAGS) -o $(NAME) $(OBJS)
 
-clean: 
+clean:
 	$(RM) *.o $(NAME)
 
 depend: .depend

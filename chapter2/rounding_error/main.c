@@ -17,6 +17,6 @@ int main(int argc, char** argv)
 	printf("erg2 = %.10f\n", erg2);
 	printf("(a + b) + c = %.10f\n", (a + b) + c);
 	printf("a + (b + c) = %.10f\n", a + (b + c));
-	
+
 	return 0;
 }

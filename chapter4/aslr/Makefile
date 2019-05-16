@@ -4,12 +4,12 @@ CXX = g++
 # optimzation flags
 #CFLAGS = -Wall -O3
 # flags for debugging
-CFLAGS = -m32 -Wall -O0 -g
+CFLAGS = -Wall -O0 -g
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = 
+LDFLAGS =
 RM = rm -rf
 ASM = nasm
-ASMFLAGS = 
+ASMFLAGS =
 NAME = aslr_demo
 C_source = aslr_demo.c
 CPP_source =
@@ -21,7 +21,7 @@ OBJS += $(patsubst %.asm, %.o, $(filter %.asm, $(ASM_source)))
 
 # other implicit rules
 %.o : %.c
-	$(CC) -c $(CFLAGS) -o $@ $< 
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 %.o : %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
