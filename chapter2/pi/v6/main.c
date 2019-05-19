@@ -5,7 +5,7 @@
 
 double step __attribute__ ((aligned(32)));
 double sum __attribute__ ((aligned(32)));
-int num_steps __attribute__ ((aligned(32))) = 1000000;
+long long num_steps __attribute__ ((aligned(32))) = 1000000;
 
 double four[] __attribute__ ((aligned(32))) = {4.0, 4.0, 4.0, 4.0};
 double two[] __attribute__ ((aligned(32))) = {2.0, 2.0, 2.0, 2.0};
@@ -68,10 +68,10 @@ int main(int argc, char **argv)
 	struct timeval start, end;
 
 	if (argc > 1)
-		num_steps = atoi(argv[1]);
+		num_steps = atoll(argv[1]);
 	if (num_steps < 100)
 		num_steps = 1000000;
-	printf("\nnum_steps = %d\n", (int)num_steps);
+	printf("\nnum_steps = %lld\n", num_steps);
 
 	gettimeofday(&start, NULL);
 

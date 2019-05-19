@@ -5,14 +5,14 @@
 int main(int argc, char **argv)
 {
 	double x, sum, step;
-	int i, num_steps = 1000000;
+	long long i, num_steps = 1000000;
 	struct timeval start, end;
 
 	if (argc > 1)
-		num_steps = atoi(argv[1]);
+		num_steps = atoll(argv[1]);
 	if (num_steps < 100)
 		num_steps = 1000000;
-	printf("\nnum_steps = %d\n", (int)num_steps);
+	printf("\nnum_steps = %lld\n", num_steps);
 
 	gettimeofday(&start, NULL);
 

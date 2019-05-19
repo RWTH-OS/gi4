@@ -8,11 +8,11 @@
 int get_max_freq(int core);
 
 static pthread_mutex_t cs_mutex = PTHREAD_MUTEX_INITIALIZER;
-int num_steps = 1000000;
+long long num_steps = 1000000;
 double step, sum;
 
 typedef struct {
-	int start, end;
+	long long start, end;
 } thread_param;
 
 void *thread_func(void *arg)
@@ -20,7 +20,7 @@ void *thread_func(void *arg)
 
 	thread_param *thr_arg = (thread_param *) arg;
 	double x;
-	int i;
+	long long i;
 
 	for (i = thr_arg->start; i < thr_arg->end; i++) {
 		x = (i + 0.5) * step;
@@ -48,10 +48,10 @@ int main(int argc, char **argv)
 	struct timeval start, end;
 
 	if (argc > 1)
-		num_steps = atoi(argv[1]);
+		num_steps = atoll(argv[1]);
 	if (num_steps < 100)
 		num_steps = 1000000;
-	printf("\nnum_steps = %d\n", (int)num_steps);
+	printf("\nnum_steps = %lld\n", num_steps);
 
 	gettimeofday(&start, NULL);
 
