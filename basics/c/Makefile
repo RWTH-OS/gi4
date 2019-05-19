@@ -6,7 +6,7 @@ CC = gcc
 CFLAGS = -Wall -O0 -g #-pthread, nur für POSIX-Threads notwendig
 ASM = nasm 
 ifeq ($(UNAME), Darwin)
-ASMFLAGS = -f macho64 -O0 -g
+ASMFLAGS = -f macho64 -O0 -g --prefix _
 LDFLAGS = -Wl,-no_pie
 else
 ASMFLAGS = -f elf64 -O0 -g -F dwarf

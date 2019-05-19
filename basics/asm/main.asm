@@ -5,19 +5,11 @@ SECTION .data
 
 SECTION .text
 
-%ifidn __OUTPUT_FORMAT__, macho64
-; oeffentliche Functionen deklarieren
-global _main
-
-; Funktionen implementieren
-_main:
-%else
 ; oeffentliche Functionen deklarieren
 global main
 
 ; Funktionen implementieren
 main:
-%endif
 	push rbp	; neuer Stackframe erzeugen
 	mov rbp, rsp
 
