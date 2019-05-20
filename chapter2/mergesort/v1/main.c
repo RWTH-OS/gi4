@@ -11,7 +11,7 @@ int a[N];
 int b[N];
 
 /* Annahme: a ist zwischen lo und m und zwischen m+1 und hi sortiert */
-void merge(int lo, int m, int hi)
+static void merge(int lo, int m, int hi)
 {
 	int i, j, k;
 
@@ -36,13 +36,13 @@ void merge(int lo, int m, int hi)
 		a[k++] = b[i++];
 }
 
-void mergesort(int lo, int hi)
+static void merge_sort(int lo, int hi)
 {
 	if (lo < hi) {
 		int m = (lo + hi) / 2;
 
-		mergesort(lo, m);
-		mergesort(m + 1, hi);
+		merge_sort(lo, m);
+		merge_sort(m + 1, hi);
 		merge(lo, m, hi);
 	}
 }
@@ -59,12 +59,12 @@ int main(int argc, char **argv)
 
 	printf("Initialisiere Feld...\n");
 	for (i = 0; i < N; i++)
-		a[i] = (int) (((double)rand() / ((double) RAND_MAX + 1)) * (RANGE_MAX - RANGE_MIN) + RANGE_MIN);
+		a[i] = (int) (((double)rand() / (double) RAND_MAX) * (RANGE_MAX - RANGE_MIN) + RANGE_MIN);
 
 	printf("Sortiere Feld...\n");
 
 	gettimeofday(&start, NULL);
-	mergesort(0, N - 1);
+	merge_sort(0, N - 1);
 	gettimeofday(&end, NULL);
 
 	printf("Ueberpruefe, ob das Feld korrekt sortiert wurde...\n");

@@ -38,6 +38,8 @@ all:
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
 
+test:
+	./$(NAME)
 clean:
 	$(RM) *.o $(NAME)
 
