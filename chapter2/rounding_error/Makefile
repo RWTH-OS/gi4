@@ -11,5 +11,11 @@ main:	main.o
 main.o:	main.c
 	$(CC) -c $(CFLAGS) main.c -o main.o
 
+test:
+	./main
+
 clean:
 	rm -f main.o main
+
+depend:
+	
