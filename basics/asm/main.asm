@@ -1,3 +1,5 @@
+DEFAULT REL
+
 extern asmfunc ; externe Funktionen deklarieren
 
 SECTION .data

@@ -1,3 +1,5 @@
+DEFAULT REL
+
 ; externe Funktion printf deklarieren
 extern printf ; externe Funktion printf deklarieren
 

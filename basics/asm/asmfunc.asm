@@ -1,3 +1,5 @@
+DEFAULT REL
+
 extern printf ; forward declaration of printf
 
 SECTION .data
