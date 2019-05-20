@@ -21,7 +21,7 @@ calcPi_SSE_thread:
 
 	; intialize xmm2 with the start vector (0.5+start, 1.5+start)
 	xorps xmm2, xmm2           ; set xmm2[0-1] to 0
-	cvtsi2ss xmm2, rdi         ; load the integer "start" as float into xmm2[0]
+	cvtsi2sd xmm2, rdi         ; load the integer "start" as double into xmm2[0]
 	shufpd xmm2, xmm2, 0x0     ; scatter the value of start over the whole regsiter xmm2
                                    ; => xmm2[0] = xmm2[1] = start
 	addpd xmm2, [ofs]          ; add the vector (0.5, 1.5)
