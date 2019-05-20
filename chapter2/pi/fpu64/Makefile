@@ -36,3 +36,6 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) *.o $(NAME)
+
+depend:
+	

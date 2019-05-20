@@ -9,6 +9,7 @@ all:
 	$(MAKE) -C v5 all
 	$(MAKE) -C v6 all
 	$(MAKE) -C v7 all
+	$(MAKE) -C fpu64 all
 
 clean:
 	$(MAKE) -C v1 clean
@@ -18,6 +19,7 @@ clean:
 	$(MAKE) -C v5 clean
 	$(MAKE) -C v6 clean
 	$(MAKE) -C v7 clean
+	$(MAKE) -C fpu64 clean
 
 depend:
 	$(MAKE) -C v1 depend
@@ -27,4 +29,5 @@ depend:
 	$(MAKE) -C v5 depend
 	$(MAKE) -C v6 depend
 	$(MAKE) -C v7 depend
+	$(MAKE) -C fpu64 depend
 
