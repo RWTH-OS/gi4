@@ -22,7 +22,7 @@ NAME = maximum # Name des Programms/der ausführbaren Datei
 OBJS  = $(patsubst %.c, %.o, $(wildcard *.c))
 OBJS += $(patsubst %.asm, %.o, $(wildcard *.asm))
 
-.PHONY: clean
+.PHONY: clean test depend
 
 # Erzeugung von Objektdateien (*.o) aus den Quellcodedateien (*.c u. *.asm)
 %.o : %.c
@@ -36,6 +36,9 @@ all:
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+test:
+	./$(NAME)
 
 clean:
 	$(RM) *.o $(NAME)
