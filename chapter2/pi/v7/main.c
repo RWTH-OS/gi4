@@ -10,24 +10,22 @@ double two[] __attribute__ ((aligned(16))) = {2.0, 2.0};
 double one[] __attribute__ ((aligned(16))) = {1.0, 1.0};
 double ofs[] __attribute__ ((aligned(16))) = {0.5, 1.5};
 
-int num_steps = 1000000;
+long long num_steps = 1000000;
 double step;
 
 typedef struct {
 	double sum;
-	int start, end;
+	long long start, end;
 } thread_param;
 
-extern void calcPi_SSE_thread(int, int, double *);
+extern void calcPi_SSE_thread(long long, long long, double *);
 
 void *thread_func(void *arg)
 {
 	thread_param *thr_arg = (thread_param *) arg;
 	double sum = 0.0;
-	int start = thr_arg->start;
-	int end = thr_arg->end;
 
-	calcPi_SSE_thread(start, end, &sum);
+	calcPi_SSE_thread(thr_arg->start, thr_arg->end, &sum);
 	thr_arg->sum = sum;
 
 	return 0;
@@ -35,7 +33,6 @@ void *thread_func(void *arg)
 
 int main(int argc, char **argv)
 {
-
 	double sum;
 	int i;
 	struct timeval start, end;
@@ -43,11 +40,11 @@ int main(int argc, char **argv)
 	thread_param thr_arg[MAX_THREADS];
 
 	if (argc > 1)
-		num_steps = atoi(argv[1]);
+		num_steps = atoll(argv[1]);
 	if (num_steps < 100)
 		num_steps = 1000000;
 
-	printf("\nnum_steps = %d\n", (int)num_steps);
+	printf("\nnum_steps = %lld\n", num_steps);
 
 	gettimeofday(&start, NULL);
 

@@ -1,16 +1,19 @@
+UNAME := $(shell uname)
 MAKE = make
 CC = gcc
 CXX = g++
-# optimzation flags
-#CFLAGS = -Wall -O3
-# flags for debugging
-CFLAGS = -m32 -Wall -O0 -g -pthread
+ifeq ($(UNAME), Darwin)
+CFLAGS = -Wall -O3 -g -march=native -mtune=native
+ASMFLAGS = -f macho64 -O0 -g --prefix _
+LDFLAGS =
+else
+CFLAGS = -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
+ASMFLAGS = -f elf64 -O0 -g -F dwarf
+LDFLAGS =
+endif
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = 
 RM = rm -rf
 ASM = nasm
-ASMFLAGS = -f elf32 -O0 -g -F dwarf
-#ASMFLAGS = -f macho32 -O0 -g --prefix _
 NAME = pi_v7
 C_source = main.c
 CPP_source =
