@@ -28,7 +28,7 @@ test:
 	$(MAKE) -C v4 test
 	$(MAKE) -C v5 test
 	$(MAKE) -C v6 test
-	#$(MAKE) -C v7 test
+	$(MAKE) -C v7 test
 	$(MAKE) -C fpu64 test
 
 depend:
