@@ -1,3 +1,5 @@
+DEFAULT REL
+
 extern printf ; externe Funktionen deklarieren
 
 SECTION .data
@@ -109,11 +111,5 @@ L2:
 	mov rsp, rbp	; alter Stackframe restaurieren
 	pop rbp
 
-	; Programm verlassen & signalisieren,
-	; dass bei bei der Ausführung kein Fehler
-	; aufgetreten ist.
-	mov rdi, 0  ; Erstes Funktionsargument
-	mov rax, 93 ; Nummer des Systemaufrufs "exit"
-	syscall
-	; oder auch
-	; int 0x80
+	mov rax, 0
+	ret
