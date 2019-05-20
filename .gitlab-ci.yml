@@ -23,6 +23,7 @@ build:
   stage: build
   script:
     - make
+    - make test
   image: ${IMAGE}
   tags:
     - docker

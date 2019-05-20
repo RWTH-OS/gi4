@@ -21,6 +21,16 @@ clean:
 	$(MAKE) -C v7 clean
 	$(MAKE) -C fpu64 clean
 
+test:
+	$(MAKE) -C v1 test
+	$(MAKE) -C v2 test
+	$(MAKE) -C v3 test
+	$(MAKE) -C v4 test
+	$(MAKE) -C v5 test
+	$(MAKE) -C v6 test
+	#$(MAKE) -C v7 test
+	$(MAKE) -C fpu64 test
+
 depend:
 	$(MAKE) -C v1 depend
 	$(MAKE) -C v2 depend

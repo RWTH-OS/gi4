@@ -39,6 +39,9 @@ default:
 all:
 	$(MAKE) $(NAME)
 
+test: $(NAME)
+	./$(NAME)
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
 
