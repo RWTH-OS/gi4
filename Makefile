@@ -6,6 +6,7 @@ all: $(DIRS)
 
 test:
 	make -C chapter2 test
+	make -C basics test
  
 $(DIRS):
 	$(MAKE) -C $@

@@ -39,6 +39,9 @@ $(NAME): $(OBJS)
 clean:
 	$(RM) *.o $(NAME)
 
+test:
+	./$(NAME)
+
 depend: .depend
 
 .depend: $(SRC)
