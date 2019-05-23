@@ -55,3 +55,5 @@ chapter4/aslr/aslr_demo
 chapter4/shlib/prog
 chapter5/lex/lex.yy.c
 chapter5/lex/varcounter
+
+.ipynb_checkpoints/
