@@ -23,7 +23,14 @@ make
 
 ## 4. Ergebnise überprüfen
 
-Nach erfolgreicher Ausführung sind unten die bearbeiteten Bilder zu sehen.
+Nach erfolgreicher Ausführung liegen die bearbeiten Bilder als Bitmaps im gleichen Ordner:
+
+```bash
+ls -1 *.bmp
+Linux_logo_black_white.bmp
+Linux_logo_diagonal.bmp
+Linux_logo_inverted.bmp
+```
 
 #### Original
 
