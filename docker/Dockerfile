@@ -13,7 +13,7 @@ RUN apt-get install -y apt-transport-https
 RUN apt-get -qq update
 
 # Install required packets from ubuntu repository
-RUN apt-get install -y man-db nano curl wget vim nano flex git binutils autoconf automake make cmake qemu-system-x86 nasm gcc g++-multilib gdb ddd
+RUN apt-get install -y man-db nano curl wget vim nano flex git binutils autoconf automake make cmake qemu-system-x86 nasm gcc g++-multilib gdb ddd qt5-default
 
 # Install Rust toolchain
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
