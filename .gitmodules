@@ -1,0 +1,15 @@
+[submodule "uebung/uebung01"]
+	path = uebung/uebung01
+	url = https://git.rwth-aachen.de/os/gi4_uebung01
+[submodule "uebung/uebung02"]
+	path = uebung/uebung02
+	url = https://git.rwth-aachen.de/os/gi4_uebung02
+[submodule "uebung/uebung03"]
+	path = uebung/uebung03
+	url = https://git.rwth-aachen.de/os/gi4_uebung03
+[submodule "uebung/uebung04"]
+	path = uebung/uebung04
+	url = https://git.rwth-aachen.de/os/gi4_uebung04
+[submodule "uebung/uebung05"]
+	path = uebung/uebung05
+	url = https://git.rwth-aachen.de/os/gi4_uebung05
