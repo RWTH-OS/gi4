@@ -38,22 +38,20 @@ void calcPi_intrinsic(void)
 
 	for (size_t i = 0; i < num_steps; i += 2)
 	{
-		// Berechne (i+0.5f)*step
+		// Berechne (i + .5) * step
 		const __m128d position_ = _mm_mul_pd(step_, ofs_);
 
-		// Quadriere das Zwischenergebniss
-		// und erhöhe um eins
+		// Quadriere das Zwischenergebnis und erhöhe um eins
 		const __m128d square_ = _mm_mul_pd(position_, position_);
 		const __m128d denominator_ = _mm_add_pd(square_, one_);
 
-		// teile 4 durch das Zwischenergebnis
+		// Teile vier durch das Zwischenergebnis
 		const __m128d summand_ = _mm_div_pd(four_, denominator_);
 
 		// Summiere die ermittelten Rechteckshöhen auf
 		sum_ = _mm_add_pd(sum_, summand_);
 
-		// Laufzäler erhöhen und
-		// zum Schleifenanfang springen
+		// Erhöhe Offset
 		ofs_ = _mm_add_pd(ofs_, two_);
 	}
 
