@@ -1,4 +1,5 @@
 #include <emmintrin.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -27,34 +28,36 @@ void calcPi(void)
 #ifndef __APPLE__
 void calcPi_intrinsic(void)
 {
-	__m128d xmm0 = {0.0, 0.0};
-	__m128d xmm1 = {step, step};
-	__m128d xmm2 = *((__m128d*)ofs);
-	__m128d xmm3, xmm4;
-	long long i;
+	const __m128d step_ = {step, step};
+	const __m128d one_ = {1., 1.};
+	const __m128d two_ = {2., 2.};
+	const __m128d four_ = {4., 4.};
 
-	for(i = 0; i < num_steps; i+=2) {
+	__m128d sum_ = {0., 0.};
+	__m128d ofs_ = {0.5, 1.5};
+
+	for (size_t i = 0; i < num_steps; i += 2)
+	{
 		// Berechne (i+0.5f)*step
-		xmm4 = _mm_mul_pd(xmm1, xmm2);
+		const __m128d position_ = _mm_mul_pd(step_, ofs_);
 
 		// Quadriere das Zwischenergebniss
 		// und erhöhe um eins
-		xmm4 = _mm_mul_pd(xmm4, xmm4);
-		xmm4 = _mm_add_pd(xmm4, *((__m128d*) one));
+		const __m128d square_ = _mm_mul_pd(position_, position_);
+		const __m128d denominator_ = _mm_add_pd(square_, one_);
 
 		// teile 4 durch das Zwischenergebnis
-		xmm3 = *((__m128d*) four);
-		xmm3 = _mm_div_pd(xmm3, xmm4);
+		const __m128d summand_ = _mm_div_pd(four_, denominator_);
 
 		// Summiere die ermittelten Rechteckshöhen auf
-		xmm0 = _mm_add_pd(xmm0, xmm3);
+		sum_ = _mm_add_pd(sum_, summand_);
 
 		// Laufzäler erhöhen und
 		// zum Schleifenanfang springen
-		xmm2 = _mm_add_pd(xmm2, *((__m128d*) two));
+		ofs_ = _mm_add_pd(ofs_, two_);
 	}
 
-	sum = xmm0[0] + xmm0[1];
+	sum = sum_[0] + sum_[1];
 }
 #endif
 #endif
