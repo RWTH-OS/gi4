@@ -5,11 +5,13 @@ CXX = g++
 RM = rm -rf
 ASM = nasm
 ifeq ($(UNAME), Darwin)
-CFLAGS = -Wall -O3 -g -march=native -mtune=native
+#CFLAGS = -Wall -O3 -march=native -mtune=native
+CFLAGS = -Wall -O0 -g
 ASMFLAGS = -f macho64 -O0 -g --prefix _
 LDFLAGS =
 else
-CFLAGS = -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
+#CFLAGS = -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387
+CFLAGS = -Wall -O0 -g
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
 LDFLAGS =
 endif
