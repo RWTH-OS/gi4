@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -qq update && \
     apt-get -qq install \
-        man-db wget vim nano flex git \
+        man-db wget vim nano flex byacc git \
         binutils autoconf automake make cmake \
         qemu-system-x86 nasm gcc \
         g++-multilib gdb ddd qt5-default
