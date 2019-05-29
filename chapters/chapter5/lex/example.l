@@ -4,7 +4,7 @@ Buchstabe	[A-Za-z]
 	int zaehler;
 %}
 %%
-{Buchstabe}({Buchstabe}|{Ziffer})*	{ zaehler++; printf("erkenne %s", yytext);}
+{Buchstabe}({Buchstabe}|{Ziffer})*	{ zaehler++; printf("Identifier erkannt: %s\n", yytext);}
 .
 %%
 int yywrap(void) {
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 		return -1;
 
 	yylex();
-	printf("Anzahl der Identifiers = %d\n", zaehler);
+	printf("Anzahl der erkannten Identifiers = %d\n", zaehler);
 	fclose(yyin);
 
 	return 0;
