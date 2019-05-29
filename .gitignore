@@ -31,13 +31,12 @@
 # Debug files
 *.dSYM/
 
+.depend
+
 basics/asm/start
-basics/c/.depend
 basics/c/start
-basics/einfach/.depend
-basics/einfach/start
+basics/simple/start
 chapters/chapter1/main
-chapters/chapter2/maximum/.vscode/
 chapters/chapter2/maximum/maximum
 chapters/chapter2/mergesort/v1/merge_v1
 chapters/chapter2/mergesort/v2/merge_v2
@@ -50,6 +49,7 @@ chapters/chapter2/pi/v4/pi_v4
 chapters/chapter2/pi/v5/pi_v5
 chapters/chapter2/pi/v6/pi_v6
 chapters/chapter2/pi/v7/pi_v7
+chapters/chapter2/strcpy/start
 chapters/chapter2/rounding_error/main
 chapters/chapter4/aslr/aslr_demo
 chapters/chapter4/shlib/prog
