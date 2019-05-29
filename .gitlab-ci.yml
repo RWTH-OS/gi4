@@ -20,7 +20,7 @@ docker:
 # Stage: build
 ##############################################################################
 
-build:
+build:linux:
   stage: build
   script:
     - make
@@ -28,6 +28,15 @@ build:
   image: ${DOCKER_IMAGE}
   tags:
     - docker
+
+build:mac:
+  stage: build
+  script:
+    - make
+    - make test
+  tags:
+    - mac
+
 # Stage: deploy
 ##############################################################################
 
