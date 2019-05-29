@@ -1,4 +1,7 @@
-SUBDIRS = c asm simple
+UNAME := $(shell uname)
+ifeq ($(UNAME), Linux)
+	SUBDIRS = aslr shlib
+endif
 
 .PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 

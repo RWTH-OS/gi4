@@ -1,12 +1,19 @@
-DIRS=$(shell find . -type f -name Makefile | xargs dirname | egrep -v '^\.$$')
+SUBDIRS = basics kguebung chapters
 
-.PHONY: all $(DIRS)
+.PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 
-all: $(DIRS)
+all: build
 
-test:
-	make -C chapters/chapter2 test
-	make -C basics test
- 
-$(DIRS):
+build: $(SUBDIRS)
+
+test: $(addprefix test-,$(SUBDIRS))
+clean: $(addprefix clean-,$(SUBDIRS))
+
+$(SUBDIRS):
 	$(MAKE) -C $@
+
+$(addprefix test-,$(SUBDIRS)): test-%: %
+	$(MAKE) -C $* test
+
+$(addprefix clean-,$(SUBDIRS)): clean-%:
+	$(MAKE) -C $* clean

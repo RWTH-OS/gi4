@@ -1,4 +1,4 @@
-SUBDIRS = c asm simple
+SUBDIRS = kguebung03
 
 .PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 

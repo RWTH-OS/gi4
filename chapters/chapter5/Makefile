@@ -1,4 +1,4 @@
-SUBDIRS = c asm simple
+SUBDIRS = lex
 
 .PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 

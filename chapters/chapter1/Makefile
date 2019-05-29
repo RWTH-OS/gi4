@@ -9,3 +9,5 @@ love:
 
 clean:
 	rm -rf main
+
+test:
