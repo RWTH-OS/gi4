@@ -99,12 +99,14 @@ number:  DIGIT
          ;
 %%
 
-main() {
+int main() {
     return yyparse();
 }
 
 int yyerror(char *s) {
     fprintf(stderr, "%s\n",s);
+
+    return 0;
 }
 
 int yywrap() {

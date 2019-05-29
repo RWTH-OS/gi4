@@ -13,4 +13,4 @@ clean:
 	rm -f lex.yy.c y.tab.c y.tab.h calc
 
 test: calc
-	test "$$(echo '(2*4)+3' | calc)" -eq 11
+	test "$$(echo '(2*4)+3' | ./calc)" -eq 11
