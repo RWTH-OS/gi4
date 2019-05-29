@@ -5,7 +5,7 @@ DIRS=$(shell find . -type f -name Makefile | xargs dirname | egrep -v '^\.$$')
 all: $(DIRS)
 
 test:
-	make -C chapter2 test
+	make -C chapters/chapter2 test
 	make -C basics test
  
 $(DIRS):
