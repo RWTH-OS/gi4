@@ -17,6 +17,14 @@ docker:
     - shell
     - linux
 
+# prepare:wsl:
+#   stage: prepage
+#   script:
+#     - bash -c "sudo apt-get update --fix-missing"
+#     - bash -c "sudo apt install man-db nano curl wget vim nano git binutils make gcc g++-multilib gdb nasm git"
+#   tags:
+#     - win10
+
 # Stage: build
 ##############################################################################
 
@@ -36,6 +44,13 @@ build:mac:
     - make test
   tags:
     - mac
+
+build:wsl:
+  stage: build
+  script:
+    - bash -c "make && make test"
+  tags:
+    - win10
 
 # Stage: deploy
 ##############################################################################
