@@ -47,4 +47,4 @@ depend:
 -include Makefile.dep
 # DO NOT DELETE
 
-
+test:
