@@ -3,9 +3,9 @@
 PLATFORM = $(shell uname)
 
 ifeq ($(PLATFORM),Darwin)
-	TARGET = PiqRig.app/Contents/MacOS/PiqRig
+	TARGET = ./PiqRig.app/Contents/MacOS/PiqRig
 else
-	TARGET = PiqRig
+	TARGET = ./PiqRig
 endif
 
 all: build
