@@ -26,7 +26,6 @@ void calcPi(void)
 }
 
 #ifdef __SSE2__
-#ifndef __APPLE__
 void calcPi_intrinsic(void)
 {
 	const __m128d step_ = {step, step};
@@ -58,7 +57,6 @@ void calcPi_intrinsic(void)
 
 	sum = sum_[0] + sum_[1];
 }
-#endif
 #endif
 
 int hasSSE2(void);
@@ -102,7 +100,6 @@ int main(int argc, char **argv)
 	printf("Time : %lf sec (FPU)\n", (double)(end.tv_sec-start.tv_sec)+(double)(end.tv_usec-start.tv_usec)/1000000.0);
 
 #ifdef __SSE2__
-#ifndef __APPLE__
 	if (hasSSE2()) {
 		gettimeofday(&start, NULL);
 
@@ -115,7 +112,6 @@ int main(int argc, char **argv)
 		printf("PI = %f (intrinsic)\n", sum * step);
 		printf("Time : %lf sec (intrinsic)\n", (double)(end.tv_sec-start.tv_sec)+(double)(end.tv_usec-start.tv_usec)/1000000.0);
 	}
-#endif
 #endif
 
 	if (hasSSE2()) {
