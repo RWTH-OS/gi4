@@ -3,11 +3,11 @@ MAKE = make
 CC = gcc
 CXX = g++
 ifeq ($(UNAME), Darwin)
-CFLAGS = -Wall -O3 -g -march=native -mtune=native -pthread
+CFLAGS = -Wall -std=c11 -O3 -g -march=native -mtune=native -pthread
 ASMFLAGS = -f macho64 -O0 -g --prefix _
 LDFLAGS =
 else
-CFLAGS = -Wall -O3 -g -march=native -mtune=native -mfpmath=sse,387 -pthread
+CFLAGS = -Wall -std=c11 -O3 -g -march=native -mtune=native -mfpmath=sse,387 -pthread
 ASMFLAGS = -f elf64 -O0 -g -F dwarf
 LDFLAGS =
 endif
