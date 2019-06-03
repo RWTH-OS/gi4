@@ -1,17 +1,18 @@
 #include <emmintrin.h>
+#include <stdalign.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 
-double step __attribute__ ((aligned(32)));
-double sum __attribute__ ((aligned(32)));
-long long num_steps __attribute__ ((aligned(32))) = 1000000;
+alignas(32) double step;
+alignas(32) double sum;
+alignas(32) long long num_steps = 1000000;
 
-double four[] __attribute__ ((aligned(32))) = {4.0, 4.0, 4.0, 4.0};
-double two[] __attribute__ ((aligned(32))) = {2.0, 2.0, 2.0, 2.0};
-double one[] __attribute__ ((aligned(32))) = {1.0, 1.0, 1.0, 1.0};
-double ofs[] __attribute__ ((aligned(32))) = {0.5, 1.5, 2.5, 3.5};
+alignas(32) double four[] = {4.0, 4.0, 4.0, 4.0};
+alignas(32) double two[] = {2.0, 2.0, 2.0, 2.0};
+alignas(32) double one[] = {1.0, 1.0, 1.0, 1.0};
+alignas(32) double ofs[] = {0.5, 1.5, 2.5, 3.5};
 
 void calcPi(void)
 {
