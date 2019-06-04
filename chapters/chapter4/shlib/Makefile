@@ -14,3 +14,5 @@ prog: prog.c
 
 clean:
 	rm -rf prog libctest.so *.o
+
+test:

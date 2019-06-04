@@ -14,3 +14,5 @@ varcounter: lex.yy.o
 
 clean:
 	rm -rf varcounter *.o lex.yy.c lex.yy.h
+
+test:

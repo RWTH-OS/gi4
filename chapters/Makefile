@@ -1,4 +1,4 @@
-SUBDIRS = c asm simple
+SUBDIRS = chapter1 chapter2 chapter4 chapter5
 
 .PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 

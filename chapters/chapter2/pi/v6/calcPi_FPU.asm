@@ -24,7 +24,7 @@ L1:
 	; Berechne (i+0.5f)*step
 	fld qword [half]
 	push rcx
-	fild dword [rsp]
+	fild qword [rsp]
 	add rsp, 8
 	faddp st1, st0    ; st1 = i + 0.5, pop st0
 	fmul qword [step]

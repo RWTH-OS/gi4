@@ -1,3 +1,4 @@
+#include <stdalign.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -5,10 +6,10 @@
 
 #define MAX_THREADS		2
 
-double four[] __attribute__ ((aligned(16))) = {4.0, 4.0};
-double two[] __attribute__ ((aligned(16))) = {2.0, 2.0};
-double one[] __attribute__ ((aligned(16))) = {1.0, 1.0};
-double ofs[] __attribute__ ((aligned(16))) = {0.5, 1.5};
+alignas(16) double four[] = {4.0, 4.0};
+alignas(16) double two[] = {2.0, 2.0};
+alignas(16) double one[] = {1.0, 1.0};
+alignas(16) double ofs[] = {0.5, 1.5};
 
 long long num_steps = 1000000;
 double step;

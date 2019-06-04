@@ -3,17 +3,12 @@ FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update Software repository
-RUN apt-get -qq update
-
-# add https support
-RUN apt-get install -y apt-transport-https
-
-# Update Software repository
-RUN apt-get -qq update
-
-# Install required packets from ubuntu repository
-RUN apt-get install -y man-db wget vim nano flex git binutils autoconf automake make cmake qemu-system-x86 nasm gcc g++-multilib gdb ddd qt5-default
+RUN apt-get -qq update && \
+    apt-get -qq install \
+        man-db wget vim nano flex byacc git \
+        binutils autoconf automake make cmake \
+        qemu-system-x86 nasm gcc \
+        g++-multilib gdb ddd qt5-default
 
 # Install Rust toolchain
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly

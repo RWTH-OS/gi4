@@ -1,0 +1,25 @@
+.PHONY: all build test clean
+
+PLATFORM = $(shell uname)
+
+ifeq ($(PLATFORM),Darwin)
+	TARGET = ./PiqRig.app/Contents/MacOS/PiqRig
+else
+	TARGET = ./PiqRig
+endif
+
+all: build
+
+build: $(TARGET)
+
+$(TARGET): Makefile
+	make
+
+Makefile: PiqRig.pro
+	qmake
+
+test: $(TARGET)
+	$(TARGET) Linux_logo.jpg
+
+clean:
+	[ -f Makefile ] && $(MAKE) clean

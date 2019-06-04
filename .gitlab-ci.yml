@@ -1,9 +1,10 @@
 variables:
-  IMAGE: rwthos/gi4
+  DOCKER_IMAGE: rwthos/gi4
 
 stages:
   - prepare
   - build
+  - deploy
 
 # Stage: prepare
 ##############################################################################
@@ -11,19 +12,53 @@ stages:
 docker:
   stage: prepare
   script:
-    - docker build -t ${IMAGE} -f docker/Dockerfile .
+    - docker build -t ${DOCKER_IMAGE} -f docker/Dockerfile .
   tags:
     - shell
     - linux
 
+# prepare:wsl:
+#   stage: prepage
+#   script:
+#     - bash -c "sudo apt-get update --fix-missing"
+#     - bash -c "sudo apt install man-db nano curl wget vim nano git binutils make gcc g++-multilib gdb nasm git"
+#   tags:
+#     - win10
+
 # Stage: build
 ##############################################################################
 
-build:
+build:linux:
   stage: build
   script:
     - make
     - make test
-  image: ${IMAGE}
+  image: ${DOCKER_IMAGE}
   tags:
     - docker
+
+build:mac:
+  stage: build
+  script:
+    - make
+    - make test
+  tags:
+    - mac
+
+#build:wsl:
+#  stage: build
+#  script:
+#    - bash -c "make && make test"
+#  tags:
+#    - win10
+
+# Stage: deploy
+##############################################################################
+
+deploy:docker:
+  stage: deploy
+  script:
+    - docker push ${DOCKER_IMAGE}
+  tags:
+    - linux
+    - shell

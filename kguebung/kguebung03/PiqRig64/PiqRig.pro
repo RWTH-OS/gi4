@@ -23,14 +23,13 @@ QMAKE_LFLAGS_RELEASE += -oformat=elf64-i386 -m64
 QMAKE_EXTRA_COMPILERS += nasmproc
 
 ASMFLAGS += -Wall
+ASM = nasm
 
 linux {
     ASMFLAGS += -f elf64 -F dwarf
-    ASM = nasm
 }
 macx {
     ASMFLAGS += -f macho64 --prefix _
-    ASM = /opt/local/bin/nasm
 }
 
 nasmproc.input = ASM_SRCS

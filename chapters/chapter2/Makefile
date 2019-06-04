@@ -1,31 +1,19 @@
-default:
-	$(MAKE) all
+SUBDIRS = pi maximum mergesort rounding_error strcpy
 
-all:
-	$(MAKE) -C pi all
-	$(MAKE) -C maximum all
-	$(MAKE) -C mergesort all
-	$(MAKE) -C rounding_error all
-	$(MAKE) -C strcpy all
+.PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 
-clean:
-	$(MAKE) -C pi clean
-	$(MAKE) -C maximum clean
-	$(MAKE) -C mergesort clean
-	$(MAKE) -C rounding_error clean
-	$(MAKE) -C strcpy clean
+all: build
 
-test:
-	$(MAKE) -C pi test
-	$(MAKE) -C maximum test
-	$(MAKE) -C mergesort test
-	$(MAKE) -C rounding_error test
-	$(MAKE) -C strcpy test
+build: $(SUBDIRS)
 
-depend:
-	$(MAKE) -C pi depend
-	$(MAKE) -C maximum depend
-	$(MAKE) -C mergesort depend
-	$(MAKE) -C rounding_error depend
-	$(MAKE) -C strcpy depend
+test: $(addprefix test-,$(SUBDIRS))
+clean: $(addprefix clean-,$(SUBDIRS))
 
+$(SUBDIRS):
+	$(MAKE) -C $@
+
+$(addprefix test-,$(SUBDIRS)): test-%: %
+	$(MAKE) -C $* test
+
+$(addprefix clean-,$(SUBDIRS)): clean-%:
+	$(MAKE) -C $* clean
