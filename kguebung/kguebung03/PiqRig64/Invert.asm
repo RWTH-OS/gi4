@@ -45,5 +45,3 @@ Invert:
 
 	pop rbp
 	ret ; return
-
-; eof
