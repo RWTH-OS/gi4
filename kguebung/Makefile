@@ -1,4 +1,4 @@
-SUBDIRS = kguebung03
+SUBDIRS = kguebung03 kguebung04
 
 .PHONY: all test build $(SUBDIRS) $(addprefix test-,$(SUBDIRS)) $(addprefix clean-,$(SUBDIRS))
 
