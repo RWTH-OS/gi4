@@ -33,5 +33,8 @@ all:
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
 
+test:
+	./$(NAME)
+
 clean: 
 	$(RM) *.o $(NAME) 
