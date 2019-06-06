@@ -16,3 +16,6 @@
 [submodule "uebung/uebung06"]
 	path = uebung/uebung06
 	url = https://git.rwth-aachen.de/os/gi4_uebung06
+[submodule "uebung/uebung07"]
+	path = uebung/uebung07
+	url = https://git.rwth-aachen.de/os/gi4_uebung01
