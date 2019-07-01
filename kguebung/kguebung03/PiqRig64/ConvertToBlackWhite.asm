@@ -63,4 +63,3 @@ ConvertToBlackWhite:
 	pop rbp
 	ret ; return
 
-; eof

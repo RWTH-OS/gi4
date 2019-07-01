@@ -45,12 +45,12 @@ build:mac:
   tags:
     - mac
 
-build:wsl:
-  stage: build
-  script:
-    - bash -c "make && make test"
-  tags:
-    - win10
+#build:wsl:
+#  stage: build
+#  script:
+#    - bash -c "make && make test"
+#  tags:
+#    - win10
 
 # Stage: deploy
 ##############################################################################

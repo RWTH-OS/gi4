@@ -54,5 +54,3 @@ DrawDiagonale:
 
 	pop rbp
 	ret ; return
-
-; eof

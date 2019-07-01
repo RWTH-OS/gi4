@@ -1,17 +1,18 @@
 #include <emmintrin.h>
+#include <stdalign.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 
-double step __attribute__ ((aligned(32)));
-double sum __attribute__ ((aligned(32)));
-long long num_steps __attribute__ ((aligned(32))) = 1000000;
+alignas(32) double step;
+alignas(32) double sum;
+alignas(32) long long num_steps = 1000000;
 
-double four[] __attribute__ ((aligned(32))) = {4.0, 4.0, 4.0, 4.0};
-double two[] __attribute__ ((aligned(32))) = {2.0, 2.0, 2.0, 2.0};
-double one[] __attribute__ ((aligned(32))) = {1.0, 1.0, 1.0, 1.0};
-double ofs[] __attribute__ ((aligned(32))) = {0.5, 1.5, 2.5, 3.5};
+alignas(32) double four[] = {4.0, 4.0, 4.0, 4.0};
+alignas(32) double two[] = {2.0, 2.0, 2.0, 2.0};
+alignas(32) double one[] = {1.0, 1.0, 1.0, 1.0};
+alignas(32) double ofs[] = {0.5, 1.5, 2.5, 3.5};
 
 void calcPi(void)
 {
@@ -25,7 +26,6 @@ void calcPi(void)
 }
 
 #ifdef __SSE2__
-#ifndef __APPLE__
 void calcPi_intrinsic(void)
 {
 	const __m128d step_ = {step, step};
@@ -57,7 +57,6 @@ void calcPi_intrinsic(void)
 
 	sum = sum_[0] + sum_[1];
 }
-#endif
 #endif
 
 int hasSSE2(void);
@@ -101,7 +100,6 @@ int main(int argc, char **argv)
 	printf("Time : %lf sec (FPU)\n", (double)(end.tv_sec-start.tv_sec)+(double)(end.tv_usec-start.tv_usec)/1000000.0);
 
 #ifdef __SSE2__
-#ifndef __APPLE__
 	if (hasSSE2()) {
 		gettimeofday(&start, NULL);
 
@@ -114,7 +112,6 @@ int main(int argc, char **argv)
 		printf("PI = %f (intrinsic)\n", sum * step);
 		printf("Time : %lf sec (intrinsic)\n", (double)(end.tv_sec-start.tv_sec)+(double)(end.tv_usec-start.tv_usec)/1000000.0);
 	}
-#endif
 #endif
 
 	if (hasSSE2()) {
