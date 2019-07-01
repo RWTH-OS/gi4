@@ -10,13 +10,13 @@ extern void __data_start;
 
 int main(int argc, char** argv)
 {
-	unsigned int esp;
+	size_t rsp;
 	int* heap = (void*) malloc(sizeof(int));
 
-	asm volatile("mov %%esp, %0" : "=r"(esp));
+	asm volatile("mov %%rsp, %0" : "=r"(rsp));
 
 	printf("Main:\t%p\n", main);
-	printf("Stack:\t0x%x\n", esp);
+	printf("Stack:\t0x%zx\n", rsp);
 	printf("Data:\t%p\n", &__data_start);
 	printf("Heap:\t%p\n", heap);
 	printf("BSS:\t%p\n", &__bss_start);
