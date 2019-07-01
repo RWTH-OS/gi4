@@ -4,7 +4,7 @@ CXX = g++
 # optimzation flags
 #CFLAGS = -Wall -O3
 # flags for debugging
-CFLAGS = -Wall -O0 -g
+CFLAGS = -Wall -O0 -g -no-pie
 CXXFLAGS = $(CFLAGS)
 LDFLAGS =
 RM = rm -rf
